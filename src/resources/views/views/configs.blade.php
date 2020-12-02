@@ -1,0 +1,1 @@
+@extends('littleadm.layouts.app')

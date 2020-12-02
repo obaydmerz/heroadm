@@ -1,0 +1,16 @@
+{
+    "name": "Obayd-Merz/HeroADM",
+    "type": "library",
+    "description": "HeroADM The Missing Laravel Admin",
+    "keywords": ["admin","hero","laravel","voyager"],
+    "homepage": "https://interplare.rf.gd",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abderrahmene",
+            "email": "j.boggiano@seld.be",
+            "homepage": "http://seld.be",
+            "role": "Developer"
+        }
+    ],
+}
