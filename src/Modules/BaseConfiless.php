@@ -1,5 +1,5 @@
 <?php
-namespace HeroADM\App\Source\Modules;
+namespace OMerz\HeroADM\Modules;
 
 class BaseConfiless {
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications\LittleADM;
+namespace OMerz\HeroADM\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

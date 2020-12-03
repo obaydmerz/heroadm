@@ -1,6 +1,6 @@
 <?php
 
-namespace App\LittleADM\Providers;
+namespace OMerz\HeroADM\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -32,11 +32,11 @@ class LADServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespaceldm)
             ->name('littleadm.')
-            ->group(base_path('app/LittleADM/Routes/web.php'));
+            ->group(base_path('src/Routes/web.php'));
         Route::middleware('web')
             ->namespace($this->namespace)
             ->name('littleadm.crud.')
-            ->group(base_path('app/LittleADM/Routes/crud.php'));
+            ->group(base_path('app/Routes/crud.php'));
     }
 
     protected function mapLittleADMCustomRoutes()

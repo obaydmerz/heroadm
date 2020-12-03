@@ -1,6 +1,6 @@
 <?php
 
-namespace App\LittleADM;
+namespace OMerz\HeroADM\Modules;
 
 
 class Permi

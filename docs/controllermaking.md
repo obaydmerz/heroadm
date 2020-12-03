@@ -1,3 +1,6 @@
+# Controller Making like this:
+
+```php
 <?php
 
 namespace App\Http\Controllers\LittleADM;
@@ -36,3 +39,5 @@ class PostsController extends BaseController
         $this->class = new Post; // Your Model
     }
 }
+
+```

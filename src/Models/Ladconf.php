@@ -1,6 +1,6 @@
 <?php
 
-namespace App\LittleADM;
+namespace OMerz\HeroADM\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
