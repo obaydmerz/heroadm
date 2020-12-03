@@ -1,10 +1,10 @@
-@extends('littleadm.layouts.app')
+@extends('heroadm.layouts.app')
 
 @section('content')
 <section class="content-header">
-    @include('littleadm.includes.crumb', [
+    @include('heroadm.includes.crumb', [
         'crumb' => [
-            ['title' => 'Media', 'route' => 'littleadm.media']
+            ['title' => 'Media', 'route' => 'heroadm.media']
         ]
     ])
 </section>
@@ -35,7 +35,7 @@
             <tbody>
                 @foreach ($dirs as $dir)
                     {{-- @php
-                        dd(route('littleadm.media', ['path' =>  $dir->path . $dir->name]));
+                        dd(route('heroadm.media', ['path' =>  $dir->path . $dir->name]));
                     @endphp --}}
                     @if(str_replace('/storage', '', $dir->path) == $path . $dir->name)
                         <tr role="row" class="odd">

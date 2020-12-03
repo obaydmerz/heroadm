@@ -1,10 +1,10 @@
-@extends('littleadm.layouts.app')
+@extends('heroadm.layouts.app')
 
 @section('content')
 <section class="content-header">
-    @include('littleadm.includes.crumb', [
+    @include('heroadm.includes.crumb', [
         'crumb' => [
-            ['title' => 'Menu Bulider', 'route' => 'littleadm.menubuilder']
+            ['title' => 'Menu Bulider', 'route' => 'heroadm.menubuilder']
         ]
     ])
 </section>
@@ -40,7 +40,7 @@
                                 <button class="btn btn-primary" onclick="modifyItem({{$item->id}}, '{{$item->name}}', '{{$item->type}}', '{{$item->val}}', '{{$item->icon}}', '{{$item->permi ? $item->permi : ''}}')">
                                     <i class="fas fa-edit"></i> Edit
                                 </button>
-                                <form action="{{route('littleadm.menubuilder.delete', ['id' => $item->id])}}" method="post">
+                                <form action="{{route('heroadm.menubuilder.delete', ['id' => $item->id])}}" method="post">
                                     @csrf
                                     <button type="submit" class="btn btn-danger ml-2">
                                         <i class="fas fa-trash-alt"></i> Delete
@@ -112,7 +112,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form method="POST" action="{{route('littleadm.menubuilder.store')}}">
+                        <form method="POST" action="{{route('heroadm.menubuilder.store')}}">
                         <div class="modal-body">
                                 @csrf
                                 <div class="container-fluid">
@@ -156,7 +156,7 @@
 </section>
 <script>
     function modifyItem(id, name, type, value, icon, permis){
-        document.getElementById('updateform').setAttribute('action', '{{route('littleadm.menubuilder.update', ['id' => 'holder'])}}'.replace('holder', id));
+        document.getElementById('updateform').setAttribute('action', '{{route('heroadm.menubuilder.update', ['id' => 'holder'])}}'.replace('holder', id));
         document.getElementById('nameup').setAttribute('value', name);
         document.getElementById('iconup').setAttribute('value', icon);
         document.getElementById('rolesup').setAttribute('value', permis);

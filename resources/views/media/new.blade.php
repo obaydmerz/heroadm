@@ -1,11 +1,11 @@
-@extends('littleadm.layouts.app')
+@extends('heroadm.layouts.app')
 
 @section('content')
 <section class="content-header">
-    @include('littleadm.includes.crumb', [
+    @include('heroadm.includes.crumb', [
         'crumb' => [
-            ['title' => 'Media', 'route' => 'littleadm.media'],
-            ['title' => 'Upload', 'route' => 'littleadm.media.upload'],
+            ['title' => 'Media', 'route' => 'heroadm.media'],
+            ['title' => 'Upload', 'route' => 'heroadm.media.upload'],
         ]
     ])
 </section>
@@ -15,7 +15,7 @@
     <!-- Info boxes -->
     <div class="row">
         <div class="container">
-            <form action="{{route('littleadm.media.upfile')}}" method="post">
+            <form action="{{route('heroadm.media.upfile')}}" method="post">
                 @csrf
                 <input type="hidden" name="new" value="media_new">
                 <div class="form-group">
@@ -27,7 +27,7 @@
                     <textarea type="file" name="file" id="file" cols="30" rows="10" class="form-control"></textarea>
                 </div>
                 <div class="form-group container row">
-                    <button class="btn btn-success" type="submit">@lang('littleadm/site.media.new')</button>
+                    <button class="btn btn-success" type="submit">@lang('heroadm/site.media.new')</button>
                 </div>
             </form>
         </div>

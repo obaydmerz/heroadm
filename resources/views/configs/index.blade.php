@@ -1,19 +1,19 @@
-@extends('littleadm.layouts.app')
+@extends('heroadm.layouts.app')
 
 @section('content')
 <section class="content-header">
-    @include('littleadm.includes.crumb', [
+    @include('heroadm.includes.crumb', [
         'crumb' => [
-            ['title' => 'Configs', 'route' => 'littleadm.configs']
+            ['title' => 'Configs', 'route' => 'heroadm.configs']
         ],
     ])
 </section>
 
 <section class="content">
-<form style="display: none;" action="{{route('littleadm.configs.default')}}" method="POST" id="formformr">
+<form style="display: none;" action="{{route('heroadm.configs.default')}}" method="POST" id="formformr">
     @csrf
 </form>
-    <form action="{{route('littleadm.configs.save')}}" method="POST">
+    <form action="{{route('heroadm.configs.save')}}" method="POST">
         @csrf
         <div class="container">
 

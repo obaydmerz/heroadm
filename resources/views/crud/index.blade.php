@@ -1,17 +1,17 @@
-@extends('littleadm.layouts.app')
+@extends('heroadm.layouts.app')
 
 @section('content')
 <section class="content-header">
-    @include('littleadm.includes.crumb', [
+    @include('heroadm.includes.crumb', [
     'crumb' => [
-    ['title' => $title1, 'route' => 'littleadm.crud.' . strtolower($title1) . '.index']
+    ['title' => $title1, 'route' => 'heroadm.crud.' . strtolower($title1) . '.index']
     ],
     ])
 </section>
 
 <section class="content">
     <div class="container-fluid">
-        <form action="{{route('littleadm.crud.' . strtolower($title1) . '.truncate')}}" style="display: none;"
+        <form action="{{route('heroadm.crud.' . strtolower($title1) . '.truncate')}}" style="display: none;"
             id="truncatef" method="post">
             @csrf
         </form>
@@ -19,15 +19,15 @@
             <div class="container">
                 @if($permi->allowat(strtolower($title1) . '_create', $roles, auth()->user()->role))
                 <div class="row col-12 mb-3">
-                    <a href="{{route('littleadm.crud.' . strtolower($title1) . '.create')}}" style="height: 100%;"
+                    <a href="{{route('heroadm.crud.' . strtolower($title1) . '.create')}}" style="height: 100%;"
                         class="btn btn-success text-center @if($permi->allowat(strtolower($title1) . '_delete', $roles, auth()->user()->role)) col-9 @else col-12 @endif mb-2">
-                        <i class="fas fa-copy"></i> @lang('littleadm/littleadm.create')
+                        <i class="fas fa-copy"></i> @lang('heroadm/heroadm.create')
                     </a>
                     @if($permi->allowat(strtolower($title1) . '_delete', $roles, auth()->user()->role))
-                    <button type="button" onclick="sconfirm('@lang('littleadm/littleadm.truncate') ?', {icon: 'warning', yesbtn: '@lang('littleadm/littleadm.sweet.yes')', nobtn: '@lang('littleadm/littleadm.sweet.no')'}, function(){
+                    <button type="button" onclick="sconfirm('@lang('heroadm/heroadm.truncate') ?', {icon: 'warning', yesbtn: '@lang('heroadm/heroadm.sweet.yes')', nobtn: '@lang('heroadm/heroadm.sweet.no')'}, function(){
                         document.getElementById('truncatef').submit();
                     }),function(){}" style="height: 100%;"
-                        class="ml-2 col-2 btn btn-danger"><i class="fas fa-trash"></i> @lang('littleadm/littleadm.truncate')</button>
+                        class="ml-2 col-2 btn btn-danger"><i class="fas fa-trash"></i> @lang('heroadm/heroadm.truncate')</button>
                     @endif
                 </div>
                 @endif
@@ -60,7 +60,7 @@
                                                 @endif
                                                 @endforeach
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                                    colspan="1" aria-label="Actions">@lang('littleadm/littleadm.actions')
+                                                    colspan="1" aria-label="Actions">@lang('heroadm/heroadm.actions')
                                                 </th>
                                             </tr>
                                         </thead>
@@ -107,7 +107,7 @@
                                                                         src="{{asset('storage/' . strtolower($title1) . '/' . $column->name . '/' . $item[$column->name])}}">
                                                                 @else
                                                                 <a href="{{asset('storage/' . strtolower($title1) . '/' . $column->name . '/' . $item[$column->name])}}"
-                                                                    download="{{$item[$column->name]}}">@lang('littleadm/littleadm.download')</a>
+                                                                    download="{{$item[$column->name]}}">@lang('heroadm/heroadm.download')</a>
                                                             @endif
                                                             @elseif($column->type == "default")
                                                                 {{$item[$column->name]}}
@@ -136,20 +136,20 @@
                                                 <td class="row d-flex justify-content-center">
                                                     @if($permi->allowat(strtolower($title1) . '_update', $roles,
                                                     auth()->user()->role))
-                                                    <a href="{{route('littleadm.crud.' . strtolower($title1) . '.update', ['id' => $item->id])}}"
-                                                        class="btn btn-primary"><i class="fas fa-edit"></i> @lang('littleadm/littleadm.edit')</a>
+                                                    <a href="{{route('heroadm.crud.' . strtolower($title1) . '.update', ['id' => $item->id])}}"
+                                                        class="btn btn-primary"><i class="fas fa-edit"></i> @lang('heroadm/heroadm.edit')</a>
                                                     @endif
                                                     @if($permi->allowat(strtolower($title1) . '_delete', $roles,
                                                     auth()->user()->role))
                                                     <form
-                                                        action="{{route('littleadm.crud.' . strtolower($title1) . '.delete', ['id' => $item->id])}}"
+                                                        action="{{route('heroadm.crud.' . strtolower($title1) . '.delete', ['id' => $item->id])}}"
                                                         method="post" id="frmdelete{{$item->id}}">
                                                         @csrf
                                                     </form>
-                                                    <button onclick="sconfirm('@lang('littleadm/littleadm.lang.deletei') ?', {icon: 'warning', yesbtn: '@lang('littleadm/littleadm.sweet.yes')', nobtn: '@lang('littleadm/littleadm.sweet.no')'}, function(){
+                                                    <button onclick="sconfirm('@lang('heroadm/heroadm.lang.deletei') ?', {icon: 'warning', yesbtn: '@lang('heroadm/heroadm.sweet.yes')', nobtn: '@lang('heroadm/heroadm.sweet.no')'}, function(){
                                                         document.getElementById('frmdelete{{$item->id}}').submit();
                                                     }),function(){}" class="ml-2 btn btn-danger"><i
-                                                            class="fas fa-trash"></i> @lang('littleadm/littleadm.delete')</button>
+                                                            class="fas fa-trash"></i> @lang('heroadm/heroadm.delete')</button>
                                                 </td>
                                                 @endif
                                             </tr>
@@ -157,7 +157,7 @@
                                         </tbody>
                                     </table>
                                     @else
-                                    <h1 class="text-danger text-center">@lang('littleadm/littleadm.not') {{$title1}}</h1>
+                                    <h1 class="text-danger text-center">@lang('heroadm/heroadm.not') {{$title1}}</h1>
                                     @endif
                                 </div>
                             </div>
@@ -228,7 +228,7 @@
    });
 
    function getRelationMany(model, name){
-       $.getJSON("http://winrak.org/fr/littleadm/subscribes/relationmany?model=" + model + "&name=" + name, function( json ) {
+       $.getJSON("http://winrak.org/fr/heroadm/subscribes/relationmany?model=" + model + "&name=" + name, function( json ) {
            var html = `<tr>`;
            var html1 = ``;
            var htp = '';

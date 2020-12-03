@@ -72,13 +72,13 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{route('littleadm.dashboard')}}" class="nav-link">@lang('littleadm/site.dashboard')</a>
+                    <a href="{{route('heroadm.dashboard')}}" class="nav-link">@lang('heroadm/site.dashboard')</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
             </ul>
 
             {{-- <!-- SEARCH FORM -->
-            <form class="form-inline ml-3" action="{{route('littleadm.users.search')}}" method="GET">
+            <form class="form-inline ml-3" action="{{route('heroadm.users.search')}}" method="GET">
                 <div class="input-group input-group-sm">
                     <input class="form-control form-control-navbar" name="search" type="search" placeholder="Search Users..."
                         aria-label="Search">
@@ -167,24 +167,24 @@
                             <li class="dropdown-item text-danger">You have {{auth()->user()->unreadNotifications->count()}} notifications</li>
                         @endif
                         @foreach(auth()->user()->unreadNotifications as $ntf)
-                            <a href="{{route('littleadm.ntfs.markasread', ['id' => $ntf->id])}}" class="dropdown-item">
+                            <a href="{{route('heroadm.ntfs.markasread', ['id' => $ntf->id])}}" class="dropdown-item">
                                 <i class="fas fa-bell text-danger"></i> {{$ntf->data['data']}}
                             </a>
                         @endforeach
                         @foreach(auth()->user()->readNotifications as $ntf)
-                            <a href="{{route('littleadm.ntfs.delete', ['id' => $ntf->id])}}" class="dropdown-item">
+                            <a href="{{route('heroadm.ntfs.delete', ['id' => $ntf->id])}}" class="dropdown-item">
                                 <i class="fas fa-bell"></i> {{$ntf->data['data']}}
                             </a>
                         @endforeach
         
                         <div class="dropdown-item row">
                                 @if(auth()->user()->unreadNotifications->count())
-                                    <a href="{{route('littleadm.ntfs.allread')}}" style="border: none;" class="btn btn-defualt col-6">
+                                    <a href="{{route('heroadm.ntfs.allread')}}" style="border: none;" class="btn btn-defualt col-6">
                                         Mark All as Readed
                                     </a>
                                 @endif
                                 @if(auth()->user()->readNotifications->count())
-                                    <a href="{{route('littleadm.ntfs.alldelete')}}" style="border: none;" class="btn btn-danger col-6">
+                                    <a href="{{route('heroadm.ntfs.alldelete')}}" style="border: none;" class="btn btn-danger col-6">
                                         Delete Readed
                                     </a>
                                 @endif
@@ -202,7 +202,7 @@
                     </a>
                 </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('littleadm.logout')}}">
+                    <a class="nav-link" href="{{route('heroadm.logout')}}">
                         <i class="fas fa-door-open"></i>
                     </a>
                 </li>
@@ -226,18 +226,18 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('littleadm.layouts._aside')
+        @include('heroadm.layouts._aside')
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            @include('littleadm.includes.sweet')
+            @include('heroadm.includes.sweet')
             @yield('content')
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright © 2020-{{date('Y')}} <a href="{{route('littleadm.dashboard')}}">LittleADM</a>.</strong> All rights
+            <strong>Copyright © 2020-{{date('Y')}} <a href="{{route('heroadm.dashboard')}}">LittleADM</a>.</strong> All rights
             reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 2.0.0
@@ -317,7 +317,7 @@
     <script src=" {{ asset('dashboard/js/demo.js')}}"></script>
     <script>
         // Definitions
-        window.littleadm.csrf = "{{ csrf_token() }}";
+        window.heroadm.csrf = "{{ csrf_token() }}";
     </script>
     @yield('scripts')
 </body>

@@ -1,1 +1,1 @@
-@extends('littleadm.layouts.app')
+@extends('heroadm.layouts.app')

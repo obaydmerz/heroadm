@@ -1,8 +1,8 @@
-@extends('littleadm.layouts.app')
+@extends('heroadm.layouts.app')
 
 @section('content')
 <section class="content-header">
-  @include('littleadm.includes.crumb', [
+  @include('heroadm.includes.crumb', [
   'crumb' => [],
   ])
 </section>
@@ -24,14 +24,14 @@
             <div class="icon">
               <i class="ion ion-bag"></i>
             </div>
-            <a href="{{route('littleadm.crud.users.index')}}" class="small-box-footer">Read <i
+            <a href="{{route('heroadm.crud.users.index')}}" class="small-box-footer">Read <i
             class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         @endif
         @foreach ($menuitems as $item) 
         @if(!$item->permi || in_array(auth()->user()->role, explode('|', $item->permi)))  
-            @if($item->type == 'crud' && Route::has('littleadm.crud.' . $item->val . '.index'))
+            @if($item->type == 'crud' && Route::has('heroadm.crud.' . $item->val . '.index'))
               <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-success">
@@ -43,7 +43,7 @@
                   <div class="icon">
                     <i class="{{$item->icon}}"></i>
                   </div>
-                  <a href="{{route('littleadm.crud.' . $item->val . '.index')}}" class="small-box-footer">Read <i class="fas fa-arrow-circle-right"></i></a>
+                  <a href="{{route('heroadm.crud.' . $item->val . '.index')}}" class="small-box-footer">Read <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
               </div>
             @endif

@@ -65,7 +65,7 @@
     </head>
 
 <body class="login-page" style="height: auto; min-height: 100%;">
-    @include('littleadm.includes.sweet')
+    @include('heroadm.includes.sweet')
     @yield('content')
 
 
@@ -127,7 +127,7 @@
     <script src=" {{ asset('dashboard/js/demo.js')}}"></script>
     <script>
         // Definitions
-        window.littleadm.csrf = "{{ csrf_token() }}";
+        window.heroadm.csrf = "{{ csrf_token() }}";
     </script>
     @yield('scripts')
 </body>

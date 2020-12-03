@@ -1,123 +1,62 @@
-@extends('littleadm.layouts.eapp')
-
-@section('title')
-    Login
+@extends('layouts.master2')
+@section('css')
+<!-- Sidemenu-respoansive-tabs css -->
+<link href="{{URL::asset('assets/plugins/sidemenu-responsive-tabs/css/sidemenu-responsive-tabs.css')}}" rel="stylesheet">
 @endsection
-
-
 @section('content')
-{{-- <div class="login-box">
-    <div class="login-logo">
-      <a><b>{{env('APP_NAME', 'Laravel')}}</b> Admin</a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-      <p class="login-box-msg">Login to start your session</p>
-  
-      <form action="{{route('littleadm.login.post')}}" method="post">
-        @csrf
-        <div class="form-group has-feedback">
-          <input type="email" class="form-control" name="email" placeholder="Email">
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-        </div>
-        <div class="form-group has-feedback">
-          <input type="password" class="form-control" name="password" placeholder="Password">
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <div class="row">
-          <div class="col-xs-8">
-            {{-- <div class="checkbox icheck">
-              <label class="">
-                <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Remember Me
-              </label>
-            </div> 
-          </div>
-          <!-- /.col -->
-          <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
-  
-      {{-- <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-          Facebook</a>
-        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-          Google+</a>
-      </div> --}}
-      <!-- /.social-auth-links -->
-  
-      {{-- <a href="#">I forgot my password</a><br>
-      <a href="register.html" class="text-center">Register a new membership</a> 
-  
-    </div>
-    <!-- /.login-box-body -->
-</div> --}}
-<div class="login-box">
-  <div class="login-logo">
-    <a><b>{{env('APP_NAME', 'Laravel')}}</b> Admin</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Login to start your session</p>
-
-      <form action="{{route('littleadm.login.post')}}" method="post">
-        @csrf
-        <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-8">
-            {{-- <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div> --}}
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
-
-      {{-- <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>
-      <!-- /.social-auth-links -->
-
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p> --}}
-    </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
+		<div class="container-fluid">
+			<div class="row no-gutter">
+				<!-- The image half -->
+				<div class="col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent">
+					<div class="row wd-100p mx-auto text-center">
+						<div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
+							<img src="{{URL::asset('assets/img/media/login.png')}}" class="my-auto ht-xl-80p wd-md-100p wd-xl-80p mx-auto" alt="logo">
+						</div>
+					</div>
+				</div>
+				<!-- The content half -->
+				<div class="col-md-6 col-lg-6 col-xl-5 bg-white">
+					<div class="login d-flex align-items-center py-2">
+						<!-- Demo content-->
+						<div class="container p-0">
+							<div class="row">
+								<div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
+									<div class="card-sigin">
+										<div class="mb-5 d-flex"> <a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="sign-favicon ht-40" alt="logo"></a><h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">Va<span>le</span>x</h1></div>
+										<div class="card-sigin">
+											<div class="main-signup-header">
+												<h2>Welcome back!</h2>
+												<h5 class="font-weight-semibold mb-4">Please login to continue.</h5>
+												<form action="#">
+													<div class="form-group">
+														<label>Email</label> <input class="form-control" placeholder="Enter your email" type="text">
+													</div>
+													<div class="form-group">
+														<label>Password</label> <input class="form-control" placeholder="Enter your password" type="password">
+													</div><button class="btn btn-main-primary btn-block">Sign In</button>
+													<div class="row row-xs">
+														<div class="col-sm-6">
+															<button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
+														</div>
+														<div class="col-sm-6 mg-t-10 mg-sm-t-0">
+															<button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
+														</div>
+													</div>
+												</form>
+												<div class="main-signin-footer mt-5">
+													<p><a href="">Forgot password?</a></p>
+													<p>Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!-- End -->
+					</div>
+				</div><!-- End -->
+			</div>
+		</div>
+@endsection
+@section('js')
 @endsection

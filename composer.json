@@ -1,5 +1,5 @@
 {
-    "name": "Obayd-Merz/HeroADM",
+    "name": "OMerz/HeroADM",
     "type": "library",
     "description": "HeroADM The Missing Laravel Admin",
     "keywords": ["admin","hero","laravel","voyager"],
@@ -8,9 +8,12 @@
     "authors": [
         {
             "name": "Abderrahmene",
-            "email": "j.boggiano@seld.be",
-            "homepage": "http://seld.be",
+            "email": "obaydmerz@gmail.com",
+            "homepage": "https://interplare.rf.gd",
             "role": "Developer"
         }
     ],
+    "require": {
+        "intervention/image": "^2.0.0"
+    }
 }

@@ -197,14 +197,14 @@
                                     <ul class="menu">
                                         @foreach(auth()->user()->unreadNotifications as $ntf)
                                             <li>
-                                                <a href="{{route('littleadm.ntfs.markasread', ['id' => $ntf->id])}}">
+                                                <a href="{{route('heroadm.ntfs.markasread', ['id' => $ntf->id])}}">
                                                     <i class="fas fa-bell text-danger"></i> {{$ntf->data['data']}}
                                                 </a>
                                             </li>
                                         @endforeach
                                         @foreach(auth()->user()->readNotifications as $ntf)
                                             <li>
-                                                <a href="{{route('littleadm.ntfs.delete', ['id' => $ntf->id])}}">
+                                                <a href="{{route('heroadm.ntfs.delete', ['id' => $ntf->id])}}">
                                                     <i class="fas fa-bell"></i> {{$ntf->data['data']}}
                                                 </a>
                                             </li>
@@ -213,12 +213,12 @@
                                 </li>
                                 <li class="footer">
                                     @if(auth()->user()->unreadNotifications->count())
-                                        <a href="{{route('littleadm.ntfs.allread')}}">
+                                        <a href="{{route('heroadm.ntfs.allread')}}">
                                             Mark All as Readed
                                         </a>
                                     @endif
                                     @if(auth()->user()->readNotifications->count())
-                                        <a href="{{route('littleadm.ntfs.alldelete')}}">
+                                        <a href="{{route('heroadm.ntfs.alldelete')}}">
                                             Delete Readed
                                         </a>
                                     @endif
@@ -349,7 +349,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="{{route('littleadm.logout')}}"
+                                        <a href="{{route('heroadm.logout')}}"
                                             class="btn btn-default btn-flat">Logout</a>
                                     </div>
                                 </li>
@@ -379,7 +379,7 @@
                 </div>
     </div>
     <!-- search form -->
-    <form action="{{route('littleadm.users.search')}}" method="get" class="sidebar-form">
+    <form action="{{route('heroadm.users.search')}}" method="get" class="sidebar-form">
         <div class="input-group">
             <input type="text" name="search" class="form-control" placeholder="Search Users...">
             <span class="input-group-btn">
@@ -393,8 +393,8 @@
     <ul class="sidebar-menu tree" data-widget="tree">
         <li class="header">General</li> {{-- General Main Navigation --}}
         <li>
-            @if(Route::has('littleadm.dashboard'))
-                <a href="{{route('littleadm.dashboard')}}">
+            @if(Route::has('heroadm.dashboard'))
+                <a href="{{route('heroadm.dashboard')}}">
                     <i class="fas fa-th"></i> <span>Dashboard</span>
                     <span class="pull-right-container">
                         <small class="label pull-right bg-green">new</small>
@@ -403,7 +403,7 @@
             @endif
         </li>
         <li class="header">Site</li> {{-- Site Main Navigation --}}
-        @if(Route::has('littleadm.users'))
+        @if(Route::has('heroadm.users'))
             <li class="treeview">
                 <a href="#">
                     <i class="fas fa-tachometer-alt"></i> <span>Site</span>
@@ -412,9 +412,9 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    @if(Route::has('littleadm.users'))
+                    @if(Route::has('heroadm.users'))
                         <li>
-                            <a href="{{route('littleadm.users')}}"><i class="far fa-circle"></i>
+                            <a href="{{route('heroadm.users')}}"><i class="far fa-circle"></i>
                                 Users
                             </a>
                         </li>
@@ -422,7 +422,7 @@
                 </ul>
             </li>
         @endif
-        @if(Route::has('littleadm.media') || Route::has('littleadm.media.upload') || Route::has('littleadm.media.new'))
+        @if(Route::has('heroadm.media') || Route::has('heroadm.media.upload') || Route::has('heroadm.media.new'))
             <li class="treeview">
                 <a href="#">
                     <i class="fas fa-image"></i>
@@ -433,18 +433,18 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        @if(Route::has('littleadm.media'))
-                            <a href="{{route('littleadm.media', ['path' => '/'])}}"><i class="far fa-circle"></i>
+                        @if(Route::has('heroadm.media'))
+                            <a href="{{route('heroadm.media', ['path' => '/'])}}"><i class="far fa-circle"></i>
                                 Media Browser
                             </a>
                         @endif
-                        @if(Route::has('littleadm.media.upload'))
-                            <a href="{{route('littleadm.media.upload')}}"><i class="far fa-circle"></i>
+                        @if(Route::has('heroadm.media.upload'))
+                            <a href="{{route('heroadm.media.upload')}}"><i class="far fa-circle"></i>
                                 Upload Media
                             </a>
                         @endif
-                        @if(Route::has('littleadm.media.new'))
-                            <a href="{{route('littleadm.media.new')}}"><i class="far fa-circle"></i>
+                        @if(Route::has('heroadm.media.new'))
+                            <a href="{{route('heroadm.media.new')}}"><i class="far fa-circle"></i>
                                 New Media
                             </a>
                         @endif
@@ -452,16 +452,16 @@
                 </ul>
             </li>
         @endif
-        @if(Route::has('littleadm.menubuilder'))
+        @if(Route::has('heroadm.menubuilder'))
             <li>
-                <a href="{{route('littleadm.menubuilder')}}">
+                <a href="{{route('heroadm.menubuilder')}}">
                     <i class="fas fa-box"></i> <span>Menu Bulider</span>
                 </a>
             </li>
         @endif
-        @if(Route::has('littleadm.configs'))
+        @if(Route::has('heroadm.configs'))
             <li>
-                <a href="{{route('littleadm.configs')}}">
+                <a href="{{route('heroadm.configs')}}">
                     <i class="fas fa-cogs"></i> <span>Configs</span>
                 </a>
             </li>
@@ -499,7 +499,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.0.0
         </div>
-        <strong>Copyright © 2020-{{date('Y')}} <a href="{{route('littleadm.dashboard')}}">LittleADM</a>.</strong> All rights
+        <strong>Copyright © 2020-{{date('Y')}} <a href="{{route('heroadm.dashboard')}}">LittleADM</a>.</strong> All rights
         reserved.
     </footer>
 

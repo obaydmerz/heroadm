@@ -13,7 +13,7 @@ class CreateLadconfsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ladconfs', function (Blueprint $table) {
+        Schema::create('heroconfs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->enum('type', ['switch', 'input'])->default('switch');
@@ -33,6 +33,6 @@ class CreateLadconfsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ladconfs');
+        Schema::dropIfExists('heroconfs');
     }
 }

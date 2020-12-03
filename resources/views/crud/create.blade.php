@@ -1,10 +1,10 @@
-@extends('littleadm.layouts.app')
+@extends('heroadm.layouts.app')
 
 @section('content')
 <section class="content-header">
-    @include('littleadm.includes.crumb', [
+    @include('heroadm.includes.crumb', [
         'crumb' => [
-            ['title' => ucfirst(strtolower($title1)), 'route' => 'littleadm.crud.' . strtolower(strtolower($title1)) . '.index']
+            ['title' => ucfirst(strtolower($title1)), 'route' => 'heroadm.crud.' . strtolower(strtolower($title1)) . '.index']
         ]
     ])
 </section>
@@ -14,7 +14,7 @@
     <!-- Info boxes -->
     <div class="row">
         <div class="container">
-            <form action="{{route('littleadm.crud.' . strtolower($title1) . '.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('heroadm.crud.' . strtolower($title1) . '.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @foreach ($columns as $column)   
                     @if(isset($column->datas['rolescontrol']) ? in_array(auth()->user()->role, explode('|', $column->datas['rolescontrol'])) : true)               
@@ -26,7 +26,7 @@
                                 @if($trans = (isset($column->datas['trans']) ? $column->datas['trans'] : false))
                                     <div class="jumbotron p-3" id="{{$column->name}}">
                                         @foreach ($trans['langs'] as $lang)
-                                            <label for="{{$column->name}}_{{$lang}}">{{$localetrt->isTrans($column->display_name) ? $localetrt->getTradCompressed($column->display_name, app()->getLocale(), 'Unknown Column') : $column->display_name}} {{__('littleadm/littleadm.per_' . $lang)}}</th></label>
+                                            <label for="{{$column->name}}_{{$lang}}">{{$localetrt->isTrans($column->display_name) ? $localetrt->getTradCompressed($column->display_name, app()->getLocale(), 'Unknown Column') : $column->display_name}} {{__('heroadm/heroadm.per_' . $lang)}}</th></label>
                                             <textarea name="{{$column->name}}_{{$lang}}" id="{{$column->name}}_{{$lang}}" cols="30" rows="10" class="form-control"></textarea>
                                         @endforeach
                                     </div>
@@ -37,7 +37,7 @@
                                 @if($trans = (isset($column->datas['trans']) ? $column->datas['trans'] : false))
                                     <div class="jumbotron p-3" id="{{$column->name}}">
                                         @foreach ($trans['langs'] as $lang)
-                                            <label for="{{$column->name}}_{{$lang}}">{{$localetrt->isTrans($column->display_name) ? $localetrt->getTradCompressed($column->display_name, app()->getLocale(), 'Unknown Column') : $column->display_name}} {{__('littleadm/littleadm.per_' . $lang)}}</label>
+                                            <label for="{{$column->name}}_{{$lang}}">{{$localetrt->isTrans($column->display_name) ? $localetrt->getTradCompressed($column->display_name, app()->getLocale(), 'Unknown Column') : $column->display_name}} {{__('heroadm/heroadm.per_' . $lang)}}</label>
                                             <input type="text" name="{{$column->name}}_{{$lang}}" id="{{$column->name}}_{{$lang}}" class="form-control">
                                         @endforeach
                                     </div>
@@ -53,7 +53,7 @@
                             @elseif($column->type == "enum")
                                 <select id="{{$column->name}}" name="{{$column->name}}" class="form-control">
                                     @if(!$column->required)
-                                        <option value="">@lang('littleadm/littleadm.lang.none')</option>
+                                        <option value="">@lang('heroadm/heroadm.lang.none')</option>
                                     @endif
                                     @foreach ($column->datas['values'] as $value)
                                         <option value="{{$value}}">{{$value}}</option>
@@ -71,7 +71,7 @@
                             @elseif($column->type == "relation" && !(isset($column->datas['auto_create']) && $column->datas['auto_create'] == true))
                                 <select id="{{$column->name}}" name="{{$column->name}}">
                                     @if(!$column->required)
-                                        <option value="">@lang('littleadm/littleadm.lang.none')</option>
+                                        <option value="">@lang('heroadm/heroadm.lang.none')</option>
                                     @endif
                                 </select>
                             @elseif($column->type == "date")
@@ -84,7 +84,7 @@
                 @endforeach
                 <div class="form-group container row">
                     <button class="btn btn-success" id="btn-save" type="submit">Save</button>
-                    <a href="{{route('littleadm.crud.' . strtolower($title1) . '.index')}}" class="btn btn-danger ml-2">Close</a>
+                    <a href="{{route('heroadm.crud.' . strtolower($title1) . '.index')}}" class="btn btn-danger ml-2">Close</a>
                 </div>
             </form>
         </div>
@@ -100,7 +100,7 @@
             @if($column->type == "relation")
                 $('#' + '{{$column->name}}').select2({
                     ajax: {
-                        url: "{{route('littleadm.crud.' . strtolower($title1) . '.relation')}}",
+                        url: "{{route('heroadm.crud.' . strtolower($title1) . '.relation')}}",
                         data: function (params) {
                             var query = {
                                 table: '{{$column->datas['relation_model']}}',

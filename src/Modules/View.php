@@ -1,5 +1,5 @@
 <?php
-namespace HeroADM\App\Modules;
+namespace OMerz\HeroADM\Modules;
 
 use App\Http\Controllers\Controller;
 

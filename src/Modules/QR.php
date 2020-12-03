@@ -1,5 +1,5 @@
 <?php
-namespace HeroADM\App\Source\Modules;
+namespace OMerz\HeroADM\Modules;
 
 class QR {
     public function url($path = "", $host = "", $client = "http", $width = 300, $height = 300){

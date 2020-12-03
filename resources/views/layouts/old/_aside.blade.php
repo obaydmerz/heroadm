@@ -24,12 +24,12 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
-                @if(Route::has('littleadm.dashboard'))
+                @if(Route::has('heroadm.dashboard'))
                     <li class="nav-item  ">
-                        <a href="{{route('littleadm.dashboard')}}" class="nav-link">
+                        <a href="{{route('heroadm.dashboard')}}" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                @lang('littleadm/site.dashboard')
+                                @lang('heroadm/site.dashboard')
                             </p>
                         </a>
 
@@ -37,10 +37,10 @@
                 @endif
                 @if(in_array(auth()->user()->role, explode('|', $configs->get('role_cont_users'))))
                     <li class="nav-item">
-                        <a href="{{route('littleadm.crud.users.index')}}" class="nav-link">
+                        <a href="{{route('heroadm.crud.users.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
-                                @lang('littleadm/site.users')
+                                @lang('heroadm/site.users')
                                 {{-- <span class="right badge badge-danger">New</span> --}}
                             </p>
                         </a>
@@ -48,10 +48,10 @@
                 @endif
                 @if(in_array(auth()->user()->role, explode('|', $configs->get('role_cont_configs'))))
                     <li class="nav-item">
-                        <a href="{{route('littleadm.configs')}}" class="nav-link">
+                        <a href="{{route('heroadm.configs')}}" class="nav-link">
                             <i class="nav-icon fas fa-cogs"></i>
                             <p>
-                                @lang('littleadm/site.configs')
+                                @lang('heroadm/site.configs')
                                 {{-- <span class="right badge badge-danger">New</span> --}}
                             </p>
                         </a>
@@ -62,51 +62,51 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
-                                @lang('littleadm/site.media.string')
+                                @lang('heroadm/site.media.string')
                                 <i class="fas fa-angle-left right"></i>
                                 {{-- <span class="badge badge-info right">6</span> --}}
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @if(Route::has('littleadm.media'))
+                            @if(Route::has('heroadm.media'))
                                 <li class="nav-item">
-                                    <a href="{{route('littleadm.media', ['path' => '/'])}}" class="nav-link"><i class="far fa-circle"></i>
-                                        @lang('littleadm/site.media.browser')
+                                    <a href="{{route('heroadm.media', ['path' => '/'])}}" class="nav-link"><i class="far fa-circle"></i>
+                                        @lang('heroadm/site.media.browser')
                                     </a>
                                 </li>
                             @endif
-                            @if(Route::has('littleadm.media.upload'))
+                            @if(Route::has('heroadm.media.upload'))
                                 <li class="nav-item">
-                                    <a href="{{route('littleadm.media.upload')}}" class="nav-link"><i class="far fa-circle"></i>
-                                        @lang('littleadm/site.media.upload')
+                                    <a href="{{route('heroadm.media.upload')}}" class="nav-link"><i class="far fa-circle"></i>
+                                        @lang('heroadm/site.media.upload')
                                     </a>
                                 </li>
                             @endif
-                            @if(Route::has('littleadm.media.new'))
+                            @if(Route::has('heroadm.media.new'))
                                 <li class="nav-item">
-                                    <a href="{{route('littleadm.media.new')}}" class="nav-link"><i class="far fa-circle"></i>
-                                        @lang('littleadm/site.media.new')
+                                    <a href="{{route('heroadm.media.new')}}" class="nav-link"><i class="far fa-circle"></i>
+                                        @lang('heroadm/site.media.new')
                                     </a>
                                 </li>
                             @endif
                         </ul>
                     </li>
                 @endif
-                @if(Route::has('littleadm.crud.mbuilders.index') && (in_array(auth()->user()->role, explode('|', $configs->get('role_cont_mbulider')))))
+                @if(Route::has('heroadm.crud.mbuilders.index') && (in_array(auth()->user()->role, explode('|', $configs->get('role_cont_mbulider')))))
                     <li class="nav-item">
-                        <a href="{{route('littleadm.crud.mbuilders.index')}}" class="nav-link">
+                        <a href="{{route('heroadm.crud.mbuilders.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-box"></i>
                             <p>
-                                @lang('littleadm/site.mbuilder')
+                                @lang('heroadm/site.mbuilder')
                             </p>
                         </a>
                     </li>
                 @endif
                 @foreach ($menuitems as $item) 
                     @if(!$item->permi || in_array(auth()->user()->role, explode('|', $item->permi)))  
-                        @if($item->type == 'crud' && Route::has('littleadm.crud.' . $item->val . '.index'))      
+                        @if($item->type == 'crud' && Route::has('heroadm.crud.' . $item->val . '.index'))      
                             <li class="nav-item">
-                                <a href="{{route('littleadm.crud.' . $item->val . '.index')}}" class="nav-link">
+                                <a href="{{route('heroadm.crud.' . $item->val . '.index')}}" class="nav-link">
                                     <i class="nav-icon {{$item->icon}}"></i>
                                     <p>
                                         {{$localetrt->isTrans($item->name) ? $localetrt->getTradCompressed($item->name, app()->getLocale()) : $item->name}}
