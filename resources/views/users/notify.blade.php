@@ -1,8 +1,8 @@
-@extends('heroadm.layouts.app')
+@extends('heroadm::layouts.master')
 
 @section('content')
 <section class="content-header">
-    @include('heroadm.includes.crumb', [
+    @include('heroadm::includes.crumb', [
         'crumb' => [
             ['title' => 'Users', 'route' => 'heroadm.users'],
             ['title' => 'Send Notification', 'route' => 'heroadm.users'],

@@ -1,8 +1,8 @@
-@extends('heroadm.layouts.app')
+@extends('heroadm::layouts.master')
 
 @section('content')
 <section class="content-header">
-    @include('heroadm.includes.crumb', [
+    @include('heroadm::includes.crumb', [
         'crumb' => [
             ['title' => 'Media', 'route' => 'heroadm.media']
         ]
