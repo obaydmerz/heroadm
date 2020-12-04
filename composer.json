@@ -1,21 +1,16 @@
 {
     "name": "obaydmerz/heroadm",
+    "description": "HeroADM the missing laravel admin",
     "type": "library",
-    "version" : "1.0.0",
-    "description": "HeroADM The Missing Laravel Admin",
-    "keywords": ["admin","hero","laravel","voyager"],
-    "homepage": "https://interplare.rf.gd",
+    "require": {
+        "intervention/image": "^2.5"
+    },
     "license": "MIT",
     "authors": [
         {
-            "name": "Abderrahmene",
-            "email": "obaydmerz@gmail.com",
-            "homepage": "https://interplare.rf.gd",
-            "role": "Developer"
+            "name": "obaydmerz",
+            "email": "obaydmerz@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {
-        "intervention/image": "^2.4"
-    }
+    "minimum-stability": "dev"
 }
