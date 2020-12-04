@@ -1,1 +1,0 @@
-@extends('heroadm.layouts.app')

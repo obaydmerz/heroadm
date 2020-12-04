@@ -6,6 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="Author" content="InterPlare Company, By Abderrahmene Merzoug">
 		@include('heroadm::layouts.head')
+		@yield('head')
 	</head>
 
 	<body class="main-body app sidebar-mini">
@@ -21,12 +22,12 @@
 			<!-- container -->
 			<div class="container-fluid">
 				@yield('page-header')
-				@include("heroadm::includes.crumb")
 				@include("heroadm::includes.sweet")
 				@yield('content')
 				@include('heroadm::layouts.sidebar')
 				@include('heroadm::layouts.models')
             	@include('heroadm::layouts.footer')
 				@include('heroadm::layouts.footer-scripts')	
+				@yield('scripts')
 	</body>
 </html>
