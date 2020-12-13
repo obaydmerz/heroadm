@@ -8,7 +8,7 @@ class CrudRoute {
     public function __construct($name = "", $controller = null, $noprefix = false)
     {
         $this->namer = $name;
-        $namecontr = $controller == null ? ucfirst($this->namer) . 'Controller' : $controller;
+        $namecontr = $controller == null ? "App\\Http\\Controllers\\" . ucfirst($this->namer) . 'Controller' : $controller;
         $this->namecontr = $namecontr;
         $arrayable = [];
 

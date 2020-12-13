@@ -1,16 +1,28 @@
 {
-    "name": "obaydmerz/heroadm",
+    "name": "omerz/heroadm",
     "description": "HeroADM the missing laravel admin",
-    "type": "library",
     "require": {
         "intervention/image": "^2.5"
     },
     "license": "MIT",
+    "keywords": ["laravel", "admin", "panel"],
     "authors": [
         {
             "name": "obaydmerz",
             "email": "obaydmerz@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "autoload": {
+        "psr-4": {
+            "OMerz\\HeroADM\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OMerz\\HeroADM\\Providers\\HEROROUTEServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
 }

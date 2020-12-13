@@ -5,7 +5,7 @@ namespace OMerz\HeroADM\Providers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
-class HEROServiceProvider extends ServiceProvider
+class HEROROUTEServiceProvider extends ServiceProvider
 {
     protected $namespace = 'App\Http\Controllers';
     protected $namespacehero = 'OMerz\Http\Controllers';

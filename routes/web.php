@@ -1,8 +1,6 @@
 <?php
 
-
-use App\LittleADM\Mbuilder;
-use App\LittleADM\Tools\CrudRoute;
+use OMerz\HeroADM\Tools\CrudRoute;
 use OMerz\HeroADM\Notifications\HeroADM as AdminNtf;
 
 
@@ -20,7 +18,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         // Crud
 
         Route::group(['as' => 'crud.'], function(){
-            new CrudRoute('users', 'HEROUserController', true);
+            new CrudRoute('users', 'OMerz\HeroADM\Http\Controllers\HEROUserController', true);
         });
 
         // Auth

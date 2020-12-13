@@ -17,4 +17,24 @@ class WhereMbuilder {
         }
         return $nmbs;
     }
+    public static function wheredynamic(){
+        $mbs = config("heroadm.mbuliders");
+        $nmbs = array();
+        foreach($mbs as $mb){
+            if($mb["type"] == "dynamic"){
+                $nmbs[] = $mb;
+            }
+        }
+        return $nmbs;
+    }
+    public static function whereurl(){
+        $mbs = config("heroadm.mbuliders");
+        $nmbs = array();
+        foreach($mbs as $mb){
+            if($mb["type"] == "url"){
+                $nmbs[] = $mb;
+            }
+        }
+        return $nmbs;
+    }
 }
