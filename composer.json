@@ -2,7 +2,8 @@
     "name": "omerz/heroadm",
     "description": "HeroADM the missing laravel admin",
     "require": {
-        "intervention/image": "^2.5"
+        "intervention/image": "^2.5",
+        "mcamara/laravel-localization": "^1.6.0"
     },
     "license": "MIT",
     "keywords": ["laravel", "admin", "panel"],

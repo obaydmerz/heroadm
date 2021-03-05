@@ -113,6 +113,14 @@ class HEROCrudController extends Controller
     }
 
     /**
+     * Processing Data c(R)ud
+     * @return Builder
+    */
+    public function process(){
+        return $this->class->all();
+    }
+
+    /**
      * Index c(R)ud
      * @return View
     */
@@ -120,7 +128,7 @@ class HEROCrudController extends Controller
         $this->allows($this->name . '_read');
         $this->action("READ", [], auth()->user());
 
-        $datas = $this->compactsview($this->class->all());
+        $datas = $this->compactsview($this->process());
 
         if(view()->exists('customhero.' . $this->name . '.index')){
             return view('customhero.' . $this->name . '.index', $datas);

@@ -5,10 +5,10 @@ use OMerz\HeroADM\Modules\BaseConfiless;
 
 class WhereMbuilder {
     public static function where(){
-        return config("heroadm.mbuliders");
+        return config("heroadm.mbuilders");
     }
     public static function wherecrud(){
-        $mbs = config("heroadm.mbuliders");
+        $mbs = config("heroadm.mbuilders");
         $nmbs = array();
         foreach($mbs as $mb){
             if($mb["type"] == "crud"){
@@ -18,7 +18,7 @@ class WhereMbuilder {
         return $nmbs;
     }
     public static function wheredynamic(){
-        $mbs = config("heroadm.mbuliders");
+        $mbs = config("heroadm.mbuilders");
         $nmbs = array();
         foreach($mbs as $mb){
             if($mb["type"] == "dynamic"){
@@ -28,7 +28,7 @@ class WhereMbuilder {
         return $nmbs;
     }
     public static function whereurl(){
-        $mbs = config("heroadm.mbuliders");
+        $mbs = config("heroadm.mbuilders");
         $nmbs = array();
         foreach($mbs as $mb){
             if($mb["type"] == "url"){

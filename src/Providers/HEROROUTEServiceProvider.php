@@ -32,26 +32,25 @@ class HEROROUTEServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespacehero)
             ->name('heroadm.')
-            ->group(base_path('src/Routes/web.php'));
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->name('heroadm.crud.')
-            ->group(base_path('app/Routes/crud.php'));
-    }
-
-    protected function mapHeroADMCustomRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->name('heroadm.')
-            ->group(base_path('routes/heroadm/custom.php'));
+            ->prefix('/heroadm')
+            ->group(base_path('routes/web.php'));
     }
 
     protected function mapHeroADMCrudRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->namespace)
+            ->namespace($this->namespacehero)
             ->name('heroadm.crud.')
-            ->group(base_path('routes/heroadm/crud.php'));
+            ->prefix('/heroadm/crud')
+            ->group(base_path('routes/crud.php'));
+    }
+
+    protected function mapHeroADMAPIRoutes()
+    {
+        Route::middleware('api')
+            ->namespace($this->namespacehero)
+            ->name('heroadm.api.')
+            ->prefix('/heroadm/api')
+            ->group(base_path('routes/api.php'));
     }
 }
