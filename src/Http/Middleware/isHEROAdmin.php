@@ -3,7 +3,7 @@
 namespace OMerz\HeroADM\Http\Middleware;
 
 use Closure;
-use OMerz\HeroADM\HEROConfig as Config;
+use OMerz\HeroADM\Modules\HEROConfig as Config;
 class isHEROAdmin
 {
     protected $roleadmin;

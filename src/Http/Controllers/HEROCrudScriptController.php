@@ -4,7 +4,6 @@ namespace OMerz\HeroADM\Http\Controllers;
 
 
 use App\User;
-use OMerz\HeroADM\Models\Heromodel;
 
 use DateTime;
 use Illuminate\Http\Request;
@@ -28,55 +27,27 @@ use OMerz\HeroADM\Tools\Schema\HEROSchemaManager;
 use Intervention\Image\ImageManagerStatic as Image;
 
 
-class HEROCrudController extends Controller
+class HEROCrudScriptController extends Controller
 {
     protected $rolesallowed = [];
     protected $name = "user";
-    protected $hmodel;
     protected $configs;
     protected $class = User::class;
     protected $columns = array();
     protected $gate;
 
-    protected function allows($action){
-        Permi::abort($action, $this->rolesallowed, auth()->user()->role);
-    }
-
-    /**
-     * Construct The Crud
-     * @return void
-    */
-    public function construct($auth){
-
-    }
-
-    /**
-     * Construct The Columns Of Crud
-     * @return void
-    */
-    public function constructcolumns(Heromodel $model){
-        $columns = $model->columns->toArray();
-        $this->columns = $columns;
-    }
-
-    /**
-     * On Action
-     * @return void
-    */
-    public function action($type, $data, $auth){
-
+    protected function allows_($action, $role){
+        Permi::abort($action, $this->rolesallowed, $role);
     }
 
     /**
      * Construct The Base Controller
      * @return void
     */
-    public function constructable(Heromodel $model){
-        $this->construct(auth()->user());
-        $this->constructcolumns($model);
+    public function _construct($user){
+        $this->construct($user);
+        $this->constructcolumns();
         $this->configs = new HEROConfig;
-        $this->hmodel = $model;
-        $this->class = $model->model();
     }
 
     /**
@@ -121,7 +92,7 @@ class HEROCrudController extends Controller
      * Processing Data c(R)ud
      * @return Builder
     */
-    public function process(){
+    public function process($user){
         return $this->class->all();
     }
 
@@ -129,32 +100,21 @@ class HEROCrudController extends Controller
      * Index c(R)ud
      * @return View
     */
-    public function index(){
+    public function index_($user){
         $this->allows($this->name . '_read');
-        $this->action("READ", [], auth()->user());
+        $this->action("READ", [], $user);
 
-        $datas = $this->compactsview($this->process());
-
-        if(view()->exists('customhero.' . $this->name . '.index')){
-            return view('customhero.' . $this->name . '.index', $datas);
-        }
-
-        return view('heroadm.views.crud.index', $datas);
+        return $this->compactsview($this->process(auth()->user()));
     }
 
     /**
      * Create (C)rud
      * @return View
     */
-    public function create(){
+    public function create_(){
         $this->allows($this->name . '_create');
         $this->action("CREATE", [], auth()->user());
-        $datas = $this->compactsview(null, 'Create');
-        if(view()->exists('customhero.' . $this->name . '.create')){
-            return view('customhero.' . $this->name . '.create', $datas);
-        }
-
-        return view('heroadm.views.crud.create', $datas);
+        return $this->compactsview(null, 'Create');
     }
 
     /**
@@ -162,7 +122,7 @@ class HEROCrudController extends Controller
      * @param $req Instance of Request
      * @return Response
     */
-    public function store(Request $req){
+    public function store_(Request $req){
         $this->allows($this->name . '_create');
         $validator = Validator::make($this->columns);
         $push = Pusher::make($this->columns, $req, $this->name);
@@ -175,15 +135,7 @@ class HEROCrudController extends Controller
         }
         $model->save();
 
-        if(Route::has('heroadm.crud.' . $this->name . '.index')){
-            return redirect(route('heroadm.crud.' . $this->name . '.index'))->with([
-                'success' => ['Created Successfully']
-            ]);
-        }
-
-        return redirect()->back()->with([
-            'success' => ['Created Successfully']
-        ]);
+        return true;
     }
 
     /**
@@ -191,18 +143,14 @@ class HEROCrudController extends Controller
      * @param $id
      * @return View
     */
-    public function edit($id){
+    public function edit_($id){
         $this->allows($this->name . '_update');
         if($collection = $this->class->find($id)){
             $this->action("EDIT", ['id' => $id, 'model' => $collection], auth()->user());
-            $datas = $this->compactsview($collection);
-            if(view()->exists('customhero.' . $this->name . '.edit')){
-                return view('customhero.' . $this->name . '.edit');
-            }
-            return view('heroadm.views.crud.edit', $datas);
+            return $this->compactsview($collection);
         }
 
-        return $this->index();
+        return false;
     }
 
     /**
@@ -211,7 +159,7 @@ class HEROCrudController extends Controller
      * @param $id
      * @return View
     */
-    public function update(Request $req, $id){
+    public function update_(Request $req, $id){
         $this->allows($this->name . '_update');
         if($model = $this->class->find($id)){
             $validator = Validator::makeOnUpdate($this->columns, $req, $model);
@@ -223,19 +171,11 @@ class HEROCrudController extends Controller
                 $model[$key] = $value;
             }
             $model->save();
-
-            if(Route::has('heroadm.crud.' . $this->name . '.index')){
-                return redirect(route('heroadm.crud.' . $this->name . '.index'))->with([
-                    'success' => ['Updated Successfully']
-                ]);
-            }
     
-            return redirect()->back()->with([
-                'success' => ['Updated Successfully']
-            ]);
+            return true;
         }
 
-        return redirect()->back();
+        return false;
     }
 
     /**
@@ -243,7 +183,7 @@ class HEROCrudController extends Controller
      * @param $id
      * @return Response
     */
-    public function destroy($id){
+    public function destroy_($id){
         $this->allows($this->name . '_delete');
         if($model = $this->class->find($id)){
             $this->action("DELETE", ['id' => $id, 'model' => $model], auth()->user());
@@ -259,34 +199,18 @@ class HEROCrudController extends Controller
             }
         }
 
-        if(Route::has('heroadm.crud.' . $this->name . '.index')){
-            return redirect(route('heroadm.crud.' . $this->name . '.index'))->with([
-                'success' => ['Deleted Successfully']
-            ]);
-        }
-
-        return redirect()->back()->with([
-            'success' => ['Deleted Successfully']
-        ]);
+        return true;
     }
 
     /**
      * Truncate cr(U)d
      * @return View
     */
-    public function truncate(){
+    public function truncate_(){
         $this->allows($this->name . '_delete');
         $this->action("TRUNCATE", [], auth()->user());
         $this->class->truncate();
-        if(Route::has('heroadm.crud.' . $this->name . '.index')){
-            return redirect(route('heroadm.crud.' . $this->name . '.index'))->with([
-                'success' => ['Truncated Successfully']
-            ]);
-        }
-
-        return redirect()->back()->with([
-            'success' => ['Truncated Successfully']
-        ]);
+        return true;
     }
 
     /**
@@ -294,7 +218,7 @@ class HEROCrudController extends Controller
      * @param $req Instance of Request
      * @return Response
     */
-    public function relation(Request $req){
+    public function relation_(Request $req){
         $tablesearched = $req->table;
         $columnshowed = $req->column;
         $this->action("RELATION", ['req' => $req, 'table' => $tablesearched, 'column' => $columnshowed], auth()->user());
@@ -333,7 +257,7 @@ class HEROCrudController extends Controller
      * @param $req Instance of Request
      * @return Response
     */
-    public function relationmany(Request $req){
+    public function relationmany_(Request $req){
         $modelr = $req->model;
         $name = $req->name;
         $this->action("RELATION_MANY", ['req' => $req, 'model' => $modelr, 'name' => 'name'], auth()->user());

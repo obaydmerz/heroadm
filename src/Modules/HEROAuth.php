@@ -3,7 +3,7 @@ namespace OMerz\HeroADM\Modules;
 use OMerz\HeroADM\Models\Herotoken;
 use Illuminate\Http\Request;
 use OMerz\HeroADM\Modules\HEROConfig;
-use App\Models\Users;
+use App\Models\User;
 
 class HEROAuth {
     public $confs;
@@ -12,7 +12,7 @@ class HEROAuth {
         $confs = new HEROConfig();
     }
 
-    public function create($user){
+    public function create(User $user){
         $ht = null;
         if($ht = Herotoken::find($user->id)){
             $ht->expire_at = $this->microtime_float() + $this->confs("max_session_life", 900000);

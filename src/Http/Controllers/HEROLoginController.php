@@ -11,13 +11,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use OMerz\HeroADM\Modules\HEROConfig as Config;
+use OMerz\HeroADM\Modules\HEROAuth;
 
 class HEROLoginController extends Controller
 {
     protected $configs;
+    protected $ha;
 
     public function __construct(){
         $this->configs = new Config;
+        $this->ha = new HEROAuth();
     }
 
     public function loginv(){
@@ -49,6 +52,7 @@ class HEROLoginController extends Controller
 
         if($resu){
             if(auth()->guard()->attempt($crd)){
+                $this->ha->create(auth()->user());
                 return redirect(route('heroadm.dashboard'));
             }
 

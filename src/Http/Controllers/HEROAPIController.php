@@ -16,9 +16,16 @@ class HEROAPIController extends Controller
     }
 
     public function getvalues($model, Request $req){
-        $idf = $this->ha->checkIdfNoAbort($req);
+        $idf = $this->ha->verifyNoAbort($req);
         $model = app("App\\Http\\Controllers\\" . ucfirst($this->model) . 'Controller');
 
-        return $this->response()->json(["data" => $model->process()], 200);
+        return $this->response()->json(["data" => $model->process($idf)], 200);
+    }
+
+    public function destroyFromModel($model, Request $req){
+        $idf = $this->ha->verifyNoAbort($req);
+        $model = app("App\\Http\\Controllers\\" . ucfirst($this->model) . 'Controller');
+
+        return $this->response()->json(["data" => $model->process($idf)], 200);
     }
 }
